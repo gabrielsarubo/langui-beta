@@ -2,9 +2,22 @@ import React, { Component } from 'react';
 import { Modal } from "bootstrap";
 
 class AddPost extends Component {
-  state = {
-    title: '',
-    desc: ''
+  constructor(props) {
+    super(props)
+
+    this.modal_newPost = React.createRef()
+    
+    this.state = {
+      title: '',
+      desc: '',
+      modal: null
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      modal: new Modal(this.modal_newPost.current)
+    })
   }
 
   handleChange = (e) => {
@@ -23,11 +36,14 @@ class AddPost extends Component {
       title: '',
       desc: ''
     })
+
+    // close modal manually
+    this.state.modal.hide()
   }
 
   render() {
     return (
-      <div className="modal fade" id="modalNewPost" tabIndex="-1" aria-labelledby="modalNewPostLabel" aria-hidden="true">
+      <div className="modal fade" ref={this.modal_newPost} id="modalNewPost" tabIndex="-1" aria-labelledby="modalNewPostLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
