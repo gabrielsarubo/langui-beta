@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AddPost from './AddPost';
-import Posts from './Posts';
+import AddPost from '../../components/AddPost';
+import Posts from '../../components/Posts';
 
 class Blog extends Component {
   state = {
