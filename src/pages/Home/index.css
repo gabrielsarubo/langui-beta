@@ -1,0 +1,15 @@
+/* Styles for the Home.js page component */
+
+.learnerHome .highlighted-card {
+  padding: 20px 16px;
+  border-radius: 4px;
+  
+  background-color: #F2F2F2;
+}
+
+.learnerHome .highlighted-card .h5 { 
+  margin-bottom: 12px;
+  color: #495057; 
+}
+
+.learnerHome .highlighted-card .h5 i { margin-right: 8px; }

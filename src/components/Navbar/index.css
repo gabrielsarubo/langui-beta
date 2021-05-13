@@ -7,10 +7,18 @@
 .mainNavbar .container-fluid {
   display: flex;
   justify-content: space-between;
-  padding: 14px 24px;
+  padding: 12px 24px;
 }
 
 .mainNavbar a {
   font-size: 24px;
+}
+
+.mainNavbar a:not(.active) {
   color: #6C757D;
+}
+
+/* overwrite .active styte from Bootstrap */
+.mainNavbar a.active {
+  color: #007BFF;
 }

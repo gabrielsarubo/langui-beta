@@ -1,10 +1,34 @@
+import './index.css'
+
 const Home = () => {
   return (
-    <div className="home">
-      <h1>Home</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, corrupti ipsam sapiente fugit voluptatum sequi aspernatur animi odio quia aperiam quae nesciunt! Rerum atque eos molestias numquam veniam iste neque.</p>
+    <div className="learnerHome">
+      <div className="container">
+        <div className="row gy-3">
+          {/* TODO make every card a Link to go to the card destination */}
+          <div className="col-sm-6">
+            <div className="highlighted-card">
+              <div className="h5">
+                <i className="bi bi-pencil-square text-primary"></i>
+                <span>Escrever um post</span>
+              </div>
+              <p className="text-secondary mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit sed morbi</p>
+            </div>
+          </div>
+
+          <div className="col-sm-6">
+            <div className="highlighted-card">
+              <div className="h5">
+                <i className="bi bi-book-half text-primary"></i>
+                <span>Phrasal Verb</span>
+              </div>
+              <p className="text-secondary mb-0">Pratique todos os dias um novo phrasal verb e melhore seu vocabulário</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
- 
+
 export default Home;
