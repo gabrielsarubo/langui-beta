@@ -5,6 +5,8 @@ import App from './App';
 import 'bootstrap/scss/bootstrap.scss';
 // Importar icones Web Font do pacote 'bootstrap-icons'
 import 'bootstrap-icons/font/bootstrap-icons.css';
+// CSS para o app
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

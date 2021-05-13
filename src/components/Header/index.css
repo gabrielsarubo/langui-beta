@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+/* Styles for the main Header on the top of the screen */
+.mainHeader {
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  font-family: 'Nunito', sans-serif;
+}
+
+.mainHeader .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.logotipo {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 36px;
+  margin-left: 8px;
+  color: #404040;
+}
+
+div.streak-container {
+  font-family: inherit;
+  font-size: 22px;
+  color: #FFC107;
+  font-weight: 700;
+}

@@ -1,0 +1,5 @@
+body {
+  /* TODO check if the code below is gonna be necessary */
+  /* Padding so that the Navbar.js doest not overlap any other content */
+  padding-bottom: 74px;
+}

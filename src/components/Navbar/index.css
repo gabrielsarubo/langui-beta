@@ -1,1 +1,16 @@
-/* Estilos para o Navbar */
+/* Estilos para o Navbar principal*/
+.mainNavbar {
+  background-color: #F7F7F7;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.075);
+}
+
+.mainNavbar .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+
+.mainNavbar a {
+  font-size: 24px;
+  color: #6C757D;
+}
