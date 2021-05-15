@@ -1,12 +1,13 @@
+import HeaderTitle from '../../components/HeaderTitle';
 import './index.css'
 
 const WordBank = () => {
   return (
     <div className="WordBank container">
-      <header className="row text-center mb-3">
-        <h1 className="my-3">Word Bank</h1>
-        <p className="text-muted">Não sobrecarregue sua cabeça com muitas palavras novas de uma vez. Pratique todo dia.</p>
-      </header>
+      <HeaderTitle 
+        title='Word Bank' 
+        paragraph='Não sobrecarregue sua cabeça com muitas palavras novas de uma vez. Pratique todo dia.' 
+      />
 
       <main className="row">
         <div className="col">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddPost from '../../components/AddPost';
 import Posts from '../../components/Posts';
+import HeaderTitle from '../../components/HeaderTitle';
 
 class Blog extends Component {
   state = {
@@ -49,9 +50,11 @@ class Blog extends Component {
   render() {
     return (
       <div className="Blog container">
-        <h1>Blog</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, laborum. Nulla numquam sequi mollitia</p>
-
+        <HeaderTitle
+          title='Blog' 
+          paragraph='Pratice writing every day to help you memorize the new words you learned.'
+        />
+        
         {/* Trigger button for New post modal */}
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewPost">
           Novo Post
