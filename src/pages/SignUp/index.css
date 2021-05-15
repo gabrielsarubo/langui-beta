@@ -1,0 +1,14 @@
+/* Styles for the Sign In component */
+.SignUp {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  
+  padding: 24px 18px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+}
+
+.SignUp a { text-decoration: none; }
