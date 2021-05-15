@@ -1,4 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+  --primary: #007BFF;
+  --brandBlack: #404040;
+  --yellow: #FFC107;
+  --lightGrayBorder: #E9ECEF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /* Override Boostrap reset CSS */
+  font-weight: 600;
+  color: var(--brandBlack);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 600;
+}
+
 body {
+  font-family: 'Nunito', sans-serif;
+
   /* TODO check if the code below is gonna be necessary */
   /* Padding so that the Navbar.js doest not overlap any other content */
   padding-bottom: 74px;

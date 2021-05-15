@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
+import WordBank from "./pages/WordBank";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Route exact path='/' component={Home} />
         <Route path='/blog' component={Blog} />
+        <Route path='/wordbank' component={WordBank} />
         <Route path='/profile' component={Profile} />
         <Navbar />
       </div>

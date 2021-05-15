@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <div className="Profile container">
-      <h1 className="h3 mb-4"><i class="bi bi-person-fill"></i>&nbsp;Perfil</h1>
+      <h1 className="h3 mb-4"><i className="bi bi-person-fill"></i>&nbsp;Perfil</h1>
       <div className="mb-2">
         <label className="form-label">Nome</label>
         <input type="name" id="name" className="form-control" value={name} placeholder="Seu nome" readOnly disabled />
@@ -24,7 +24,7 @@ const Profile = () => {
       </div>
       <hr />
       <button className="btn btn-dark">
-      <i class="bi bi-box-arrow-left"></i>&nbsp;&nbsp;Desconectar</button>
+      <i className="bi bi-box-arrow-left"></i>&nbsp;&nbsp;Desconectar</button>
     </div>
   );
 }

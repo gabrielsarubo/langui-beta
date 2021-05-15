@@ -1,0 +1,17 @@
+/* Styles for the Wordbank component */
+.WordBank {
+  
+}
+
+.WordBank .box-exercise {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--brandBlack);
+  
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--lightGrayBorder);
+}
+
+.WordBank .box-exercise h6 { font-weight: 700; }

@@ -12,8 +12,7 @@ const Header = () => {
         </div>
         {/* Container for the streak counter */}
         <div className="streak-container">
-          <i className="bi bi-lightning-charge-fill"></i>
-          7
+          <i className="bi bi-lightning-charge-fill"></i>&nbsp;7
         </div>
       </div>
     </header>
