@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { Modal } from "bootstrap";
 
-class AddPost extends Component {
+class ViewPost extends Component {
   constructor(props) {
     super(props)
 
-    this.modal_newPost = React.createRef()
+    this.modal_viewPost = React.createRef()
     
     this.state = {
-      title: '',
-      desc: '',
+      postTitle: '',
+      postDesc: '',
       modal: null
     }
   }
 
   componentDidMount() {
     this.setState({
-      modal: new Modal(this.modal_newPost.current)
+      modal: new Modal(this.modal_viewPost.current)
     })
   }
 
@@ -29,13 +29,13 @@ class AddPost extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    this.props.addPost(this.state)
+    // this.props.addPost(this.state)
 
     // empty the state
-    this.setState({
-      title: '',
-      desc: ''
-    })
+    // this.setState({
+    //   postTitle: '',
+    //   postDesc: ''
+    // })
 
     // close modal manually
     this.state.modal.hide()
@@ -43,24 +43,24 @@ class AddPost extends Component {
 
   render() {
     return (
-      <div className="modal fade" ref={this.modal_newPost} id="modalNewPost" tabIndex="-1" aria-labelledby="modalNewPostLabel" aria-hidden="true">
+      <div className="modal fade" ref={this.modal_viewPost} id="modalViewPost" tabIndex="-1" aria-labelledby="modalViewPostLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="modalNewPostLabel">Novo Post</h5>
+              <h5 className="modal-title" id="modalViewPostLabel">Post</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div className="modal-body">
               <div className="mb-3">
-                <input type="text" id="title" className="form-control" onChange={this.handleChange} value={this.state.title} placeholder="Título do post" />
+                <input type="text" id="postTitle" className="form-control" onChange={this.handleChange} value={this.state.postTitle} placeholder="Título do post" readOnly />
               </div>
 
               <div className="mb-3">
-                <textarea id="desc" rows="4" className="form-control" onChange={this.handleChange} value={this.state.desc} placeholder="Comece a escrever..." ></textarea>
+                <textarea id="postDesc" rows="4" className="form-control" onChange={this.handleChange} value={this.state.postDesc} placeholder="Comece a escrever..." readOnly ></textarea>
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal" onClick={() => { this.props.deletePost(this.props.postId) }}>Apagar</button>
               <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Salvar</button>
             </div>
           </div>
@@ -70,4 +70,4 @@ class AddPost extends Component {
   }
 }
 
-export default AddPost;
+export default ViewPost;

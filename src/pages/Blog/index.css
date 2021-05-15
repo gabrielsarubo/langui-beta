@@ -1,0 +1,13 @@
+/* Styles for the (page) Blog component */
+
+/* Floating New Post button */
+button#buttonNewPost {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  z-index: 1;
+
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
