@@ -3,6 +3,8 @@
   
 }
 
+.WordBank a:link { text-decoration: none; }
+
 .WordBank .box-exercise {
   display: flex;
   justify-content: space-between;

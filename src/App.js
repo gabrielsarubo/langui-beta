@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import WordBank from "./pages/WordBank";
+import PhrasalVerb from "./pages/PhrasalVerb";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route path='/blog' component={Blog} />
         <Route path='/wordbank' component={WordBank} />
+        <Route path='/phrasalverb' component={PhrasalVerb} />
         <Route path='/profile' component={Profile} />
         <Navbar />
       </div>
