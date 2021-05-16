@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AddPost from '../../components/AddPost';
-import ViewPost from '../../components/ViewPost';
 import Posts from '../../components/Posts';
 import HeaderTitle from '../../components/HeaderTitle';
 import './index.css'
@@ -20,8 +19,7 @@ class Blog extends Component {
         date: "May 9",
         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
       }
-    ],
-    currentPostId: null
+    ]
   }
 
   addPost = post => {
@@ -40,15 +38,6 @@ class Blog extends Component {
     })
   }
 
-  // Get the id of the post that was clicked, so the modal know which post to delete
-  getPostId = id => {
-    this.setState({
-      currentPostId: id
-    })
-  }
-
-  // Must be passed as a prop along with the id of the post
-  // Receives an id of the post to be deleted
   deletePost = id => {
     let posts = this.state.posts.filter(post => {
       return post.id !== id
@@ -77,14 +66,11 @@ class Blog extends Component {
         {/* New Post modal */}
         <AddPost addPost={this.addPost} />
 
-        {/* VIew Post modal */}
-        <ViewPost postId={this.state.currentPostId} deletePost={this.deletePost} />
-
         {/* Section for listing the Posts */}
         <section className="container my-3 px-0">
           <div className="row g-3 post-list">
             {/* List of cards of posts, Posts returns elements that look like this -> <div className="col-12 col-md-6"> */}
-            <Posts posts={this.state.posts} getPostId={this.getPostId} />
+            <Posts posts={this.state.posts} deletePost={this.deletePost} />
           </div>
         </section>
       </div>

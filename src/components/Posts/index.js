@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Posts = ({ posts, getPostId }) => {
+const Posts = ({ posts, deletePost }) => {
 
   // if posts has some data, it maps the array,
   // if not, it does not map the array and returns null
@@ -8,13 +8,14 @@ const Posts = ({ posts, getPostId }) => {
     posts.map(post => {
       return (
         <div className="col-12 col-md-6" key={post.id}>
-          <div className="card" data-bs-toggle="modal" data-bs-target="#modalViewPost" onClick={() => { getPostId(post.id) }}>
+          <div className="card">
             <div className="card-body">
               <div className="mb-2 d-flex align-items-center">
                 <h6 className="card-title m-0">{post.title}</h6>
                 <div className="card-date mx-2 text-muted">{post.date}</div>
               </div>
               <p className="card-text text-muted">{post.desc}</p>
+              <p onClick={() => { deletePost(post.id) }}>Apagar</p>
             </div>
           </div>
         </div>
