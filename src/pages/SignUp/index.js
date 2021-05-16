@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import firebase from "../../config/firebase";
+import 'firebase/auth';
 import { Link } from 'react-router-dom';
 import './index.css';
 import Logo from '../../assets/brand/langui-logo.svg';
@@ -7,11 +9,20 @@ const SignUp = () => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [isValid, setIsValid] = useState()
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    console.log(name, email, password)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        // console.log(res);
+        setIsValid(true)
+      })
+      .catch(err => {
+        // console.log(err);
+        setIsValid(false)
+      })
   }
 
   return (
@@ -34,6 +45,11 @@ const SignUp = () => {
           <label htmlFor="password" className="form-label">Senha</label>
           <input type="password" id="password" className="form-control" onChange={e => { setPassword(e.target.value) }} placeholder="Sua senha" required />
         </div>
+
+        {isValid === undefined && null}
+        {isValid === true && (<div className="feedback-alert text-center text-success mb-4">Cadastro feito com sucesso!</div>)}
+        {isValid === false && (<div className="feedback-alert text-center text-danger mb-4">Algo deu errado, verifique ou tente novamente mais tarde.</div>)}
+
         <button type="submit" className="btn btn-primary w-100"
           disabled={(!(name !== '' && email !== '' && password !== '')) || (false)}>
           Criar Conta
