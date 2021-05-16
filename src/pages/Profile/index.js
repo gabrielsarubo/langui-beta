@@ -1,3 +1,5 @@
+import HeaderTitle from '../../components/HeaderTitle';
+
 const Profile = () => {
   const profileData = {
     name: 'Gabriel Sousa',
@@ -9,7 +11,8 @@ const Profile = () => {
 
   return (
     <div className="Profile container">
-      <h1 className="h3 mb-4"><i className="bi bi-person-fill"></i>&nbsp;Perfil</h1>
+      <h1 className="mb-4">Perfil</h1>
+
       <div className="mb-2">
         <label className="form-label">Nome</label>
         <input type="name" id="name" className="form-control" value={name} placeholder="Seu nome" readOnly disabled />

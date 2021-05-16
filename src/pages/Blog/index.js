@@ -10,13 +10,13 @@ class Blog extends Component {
       {
         id: 1,
         title: "Title of the post",
-        date: "May 10",
+        date: 1621125559993,
         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
       },
       {
         id: 2,
         title: "Another title",
-        date: "May 9",
+        date: 1621125559993,
         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
       }
     ]
@@ -25,9 +25,8 @@ class Blog extends Component {
   addPost = post => {
     // TODO 
     // - get the id of the post from the database?
-    // - revise the way it is getting the time
     post.id = Math.random()
-    post.date = new Date().getTime()
+    post.date = new Date().getTime() //returns unix timestamp in milliseconds
 
     // create a new copy of posts while at same time adding a new post
     let posts = [...this.state.posts, post]
