@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import firebase from "../../config/firebase";
+import 'firebase/auth'
 import './index.css';
 import Logo from '../../assets/brand/langui-logo.svg';
 
 const SignIn = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [isAuthenticated, setIsAuthenticated] = useState()
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    console.log(email, password);
+    // Authenticate sign in using Firebase Authentication
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(res => {
+        // console.log(res);
+        setIsAuthenticated(true)
+      })
+      .catch(err => {
+        // console.log(err);
+        setIsAuthenticated(false)
+      })
   }
 
   return (
@@ -29,6 +41,11 @@ const SignIn = () => {
           <label htmlFor="password" className="form-label">Senha</label>
           <input type="password" id="password" className="form-control" onChange={e => setPassword(e.target.value)} placeholder="Sua senha" required />
         </div>
+
+        {isAuthenticated === undefined && null}
+        {isAuthenticated === true && (<div className="feedback-alert text-center text-success mb-4">Bem-vindo de volta!</div>)}
+        {isAuthenticated === false && (<div className="feedback-alert text-center text-danger mb-4">Credenciais inválidas!</div>)}
+
         <button type="submit" className="btn btn-primary w-100"
           disabled={(!(email !== '' && password !== '')) || (false)}>
           Entrar
