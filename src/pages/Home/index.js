@@ -1,8 +1,12 @@
+import Header from '../../components/Header';
+import Navbar from '../../components/Navbar';
 import './index.css'
 
 const Home = () => {
   return (
     <div className="learnerHome">
+      <Header />
+      <Navbar />
       <div className="container">
         <div className="row gy-3">
           {/* TODO make every card a Link to go to the card destination */}
