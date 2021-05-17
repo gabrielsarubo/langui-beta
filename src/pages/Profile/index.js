@@ -1,8 +1,9 @@
 // Components
+import { useDispatch } from "react-redux";
 import HeaderTitle from "../../components/HeaderTitle";
 import Navbar from "../../components/Navbar"
 
-const Profile = () => {
+const Profile = (props) => {
   const profileData = {
     name: 'Gabriel Sousa',
     email: 'gabrielsaubo@hotmail.com',
@@ -10,6 +11,15 @@ const Profile = () => {
   }
 
   const { name, email, password } = profileData
+
+  const dispatch = useDispatch()
+
+  const handleSignOut = () => {
+    // Dispatch an action to sign out (clear email and set userSignedIn to false)
+    dispatch({type: 'SIGN_OUT'})
+    // Redirect user to sign in page at /signin
+    props.history.push('/signin')
+  }
 
   return (
     <div className="Profile">
@@ -34,7 +44,7 @@ const Profile = () => {
           <input type="password" id="password" className="form-control" value={password} placeholder="Sua senha" readOnly disabled />
         </div>
         <hr />
-        <button className="btn btn-dark">
+        <button className="btn btn-dark" onClick={handleSignOut}>
           <i className="bi bi-box-arrow-left"></i>&nbsp;&nbsp;Desconectar
         </button>
       </main>
