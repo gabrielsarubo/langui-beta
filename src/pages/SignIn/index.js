@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+// Firebase Auth
 import firebase from "../../config/firebase";
 import 'firebase/auth'
+// CSS
 import './index.css';
 import Logo from '../../assets/brand/langui-logo.svg';
 
@@ -9,6 +13,8 @@ const SignIn = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [isAuthenticated, setIsAuthenticated] = useState()
+
+  const dispatch = useDispatch()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -18,6 +24,9 @@ const SignIn = () => {
       .then(res => {
         // console.log(res);
         setIsAuthenticated(true)
+
+        // Dispatch an action to Reducer, used to save data to the store
+        dispatch({ type: 'SIGN_IN', userEmail: email })
       })
       .catch(err => {
         // console.log(err);
@@ -28,6 +37,11 @@ const SignIn = () => {
   return (
     // Container for the entire sign component
     <div className="SignIn">
+
+      {/* Redirect user to Home if authenticated */}
+      {/* // useSelector() allows me to access the store */}
+      { useSelector(state => state.userSignedIn ? <Redirect to='/' /> : null)}
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <img src={Logo} alt="" />

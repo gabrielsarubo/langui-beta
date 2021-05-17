@@ -7,15 +7,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SIGN_IN':
       return {...state, userSignedIn: true, userEmail: action.userEmail}
-      break;
 
     case 'SIGN_OUT':
-      return {...state, userSignedIn: false, userEmail: null}
-      break
-      
+      return {...state, userSignedIn: false, userEmail: null}  
+          
     default:
       return state
-      break;
   }
 }
 
