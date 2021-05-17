@@ -25,21 +25,6 @@ class Blog extends Component {
     ]
   }
 
-  addPost = post => {
-    // TODO 
-    // - get the id of the post from the database?
-    post.id = Math.random()
-    post.date = new Date().getTime() //returns unix timestamp in milliseconds
-
-    // create a new copy of posts while at same time adding a new post
-    let posts = [...this.state.posts, post]
-
-    // update the state in a non-destructive way
-    this.setState({
-      posts
-    })
-  }
-
   deletePost = id => {
     let posts = this.state.posts.filter(post => {
       return post.id !== id
