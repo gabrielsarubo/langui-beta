@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import WordBank from "./pages/WordBank";
 import PhrasalVerb from "./pages/PhrasalVerb";
 import ViewPost from "./pages/ViewPost";
+import AddPost from "./pages/AddPost";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/signup' component={SignUp} />
           <Route exact path='/' component={Home} />
           <Route path='/blog' component={Blog} />
+          <Route path='/addpost' component={AddPost} />
           <Route path='/viewpost' component={ViewPost} />
           <Route path='/wordbank' component={WordBank} />
           <Route path='/phrasalverb' component={PhrasalVerb} />
