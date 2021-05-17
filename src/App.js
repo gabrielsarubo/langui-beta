@@ -1,4 +1,7 @@
 import { BrowserRouter, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+// Pages
 import Blog from "./pages/Blog";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
@@ -10,18 +13,20 @@ import ViewPost from "./pages/ViewPost";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Route path='/signin' component={SignIn} />
-        <Route path='/signup' component={SignUp} />
-        <Route exact path='/' component={Home} />
-        <Route path='/blog' component={Blog} />
-        <Route path='/viewpost' component={ViewPost} />
-        <Route path='/wordbank' component={WordBank} />
-        <Route path='/phrasalverb' component={PhrasalVerb} />
-        <Route path='/profile' component={Profile} />
-      </div>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Route path='/signin' component={SignIn} />
+          <Route path='/signup' component={SignUp} />
+          <Route exact path='/' component={Home} />
+          <Route path='/blog' component={Blog} />
+          <Route path='/viewpost' component={ViewPost} />
+          <Route path='/wordbank' component={WordBank} />
+          <Route path='/phrasalverb' component={PhrasalVerb} />
+          <Route path='/profile' component={Profile} />
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
