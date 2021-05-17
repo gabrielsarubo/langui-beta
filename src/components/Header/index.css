@@ -2,7 +2,6 @@
 
 /* Styles for the main Header on the top of the screen */
 .mainHeader {
-  margin-bottom: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
   font-family: 'Nunito', sans-serif;

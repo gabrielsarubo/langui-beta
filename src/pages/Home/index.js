@@ -7,7 +7,7 @@ const Home = () => {
     <div className="learnerHome">
       <Header />
       <Navbar />
-      <div className="container">
+      <main className="container mt-3">
         <div className="row gy-3">
           {/* TODO make every card a Link to go to the card destination */}
           <div className="col-sm-6">
@@ -30,7 +30,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
