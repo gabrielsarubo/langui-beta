@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Posts = ({ posts, search, dateFilters }) => {
 
@@ -26,6 +27,32 @@ const Posts = ({ posts, search, dateFilters }) => {
           if ((post.title.toString().toLowerCase().includes(search)) || (search === '')) {
             return (
               <div className="col-12 col-md-6" key={post.id}>
+                <Link to={`/postdetails/${post.id}`} className="text-decoration-none">
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="mb-2 d-flex align-items-center">
+                        <h6 className="card-title m-0">{post.title}</h6>
+                        <div className="card-date mx-2 text-muted">
+                          {/* //converts post.date (unix timestamp in miliseconds) to '{15} de {maio}' */}
+                          {convertDate(post.creationDate.seconds * 1000)}
+                        </div>
+                      </div>
+                      <p className="card-text text-muted">{post.description}</p>
+                      {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            )
+          } else {
+            return null
+          }
+        }
+      } else {
+        if ((post.title.toString().toLowerCase().includes(search)) || (search === '')) {
+          return (
+            <div className="col-12 col-md-6" key={post.id}>
+              <Link to={`/postdetails/${post.id}`} className="text-decoration-none">
                 <div className="card">
                   <div className="card-body">
                     <div className="mb-2 d-flex align-items-center">
@@ -39,29 +66,7 @@ const Posts = ({ posts, search, dateFilters }) => {
                     {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
                   </div>
                 </div>
-              </div>
-            )
-          } else {
-            return null
-          }
-        }
-      } else {
-        if ((post.title.toString().toLowerCase().includes(search)) || (search === '')) {
-          return (
-            <div className="col-12 col-md-6" key={post.id}>
-              <div className="card">
-                <div className="card-body">
-                  <div className="mb-2 d-flex align-items-center">
-                    <h6 className="card-title m-0">{post.title}</h6>
-                    <div className="card-date mx-2 text-muted">
-                      {/* //converts post.date (unix timestamp in miliseconds) to '{15} de {maio}' */}
-                      {convertDate(post.creationDate.seconds * 1000)}
-                    </div>
-                  </div>
-                  <p className="card-text text-muted">{post.description}</p>
-                  {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
-                </div>
-              </div>
+              </Link>
             </div>
           )
         } else {
