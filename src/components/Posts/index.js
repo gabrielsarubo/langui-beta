@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, search, dateFilters }) => {
 
   const convertDate = milliseconds => {
     const dateObject = new Date(milliseconds)
@@ -17,23 +17,60 @@ const Posts = ({ posts }) => {
   // if not, it does not map the array and returns null
   const postsList = posts.length ? (
     posts.map(post => {
-      return (
-        <div className="col-12 col-md-6" key={post.id}>
-          <div className="card">
-            <div className="card-body">
-              <div className="mb-2 d-flex align-items-center">
-                <h6 className="card-title m-0">{post.title}</h6>
-                <div className="card-date mx-2 text-muted">
-                  {/* //converts post.date (unix timestamp in miliseconds) to '{15} de {maio}' */}
-                  {convertDate(post.creationDate.seconds * 1000)}
+      let dbDate = new Date(post.creationDate.seconds * 1000).toString().slice(0, 15) //returns Tue May 18 2021
+      let todaysDate = new Date().toString().slice(0, 15) //returns Tue May 18 2021
+
+      if (dateFilters.today) {
+        // Compare today's date to the date of each post in the db
+        if (dbDate === todaysDate) {
+          if ((post.title.toString().toLowerCase().includes(search)) || (search === '')) {
+            return (
+              <div className="col-12 col-md-6" key={post.id}>
+                <div className="card">
+                  <div className="card-body">
+                    <div className="mb-2 d-flex align-items-center">
+                      <h6 className="card-title m-0">{post.title}</h6>
+                      <div className="card-date mx-2 text-muted">
+                        {/* //converts post.date (unix timestamp in miliseconds) to '{15} de {maio}' */}
+                        {convertDate(post.creationDate.seconds * 1000)}
+                      </div>
+                    </div>
+                    <p className="card-text text-muted">{post.description}</p>
+                    {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
+                  </div>
                 </div>
               </div>
-              <p className="card-text text-muted">{post.description}</p>
-              {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
+            )
+          } else {
+            return null
+          }
+        }
+      } else {
+        if ((post.title.toString().toLowerCase().includes(search)) || (search === '')) {
+          return (
+            <div className="col-12 col-md-6" key={post.id}>
+              <div className="card">
+                <div className="card-body">
+                  <div className="mb-2 d-flex align-items-center">
+                    <h6 className="card-title m-0">{post.title}</h6>
+                    <div className="card-date mx-2 text-muted">
+                      {/* //converts post.date (unix timestamp in miliseconds) to '{15} de {maio}' */}
+                      {convertDate(post.creationDate.seconds * 1000)}
+                    </div>
+                  </div>
+                  <p className="card-text text-muted">{post.description}</p>
+                  {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )
+          )
+        } else {
+          return null
+        }
+      }
+
+      // solve issue: map() always needs to return something
+      return null
     })
   ) : (
     // Template for when there are no posts or loading them

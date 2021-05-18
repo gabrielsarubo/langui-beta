@@ -11,7 +11,9 @@ import './index.css'
 
 class Blog extends Component {
   state = {
-    posts: []
+    posts: [],
+    search: '',
+    dateFilters: {all: true, today: false}
   }
 
   componentDidMount() {    
@@ -34,6 +36,24 @@ class Blog extends Component {
       })
   }
 
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value.toString().toLowerCase()
+    })
+  }
+
+  handleFilter = e => {
+    if (e.target.id === 'dateFilters-all') {
+      this.setState({
+        dateFilters: {all: true, today: false}
+      })
+    } else if (e.target.id === 'dateFilters-today') {
+      this.setState({
+        dateFilters: {all: false, today: true}
+      })
+    }
+  }
+
   render() {
     return (
       <div className="Blog">
@@ -46,6 +66,26 @@ class Blog extends Component {
             paragraph='Pratice writing every day to help you memorize the new words you learned.'
           />
 
+          {/* Search bar */}
+          <div className="row mb-4">
+            <div className="input-group">
+              <span className="input-group-text" id="search-addon"><i className="bi bi-search"></i></span>
+              <input type="text" id="search" className="form-control py-2" onChange={this.handleChange} placeholder="Pesquisar por título.." aria-describedby="search-addon" />
+            </div>
+          </div>
+
+          {/* Filter tags */}
+          <div className="d-flex flex-row mb-4">
+            <div className="me-2">
+              <input type="radio" className="btn-check" name="options-dateFilters" id="dateFilters-all" onChange={this.handleFilter} checked={this.state.dateFilters.all} />
+              <label className="btn btn-sm btn-outline-secondary" htmlFor="dateFilters-all">Todos</label>
+            </div>
+            <div className="me-2">
+              <input type="radio" className="btn-check" name="options-dateFilters" id="dateFilters-today" onChange={this.handleFilter} checked={this.state.dateFilters.today} />
+              <label className="btn btn-sm btn-outline-secondary" htmlFor="dateFilters-today">Hoje</label>
+            </div>
+          </div>
+
           {/* Floating trigger button to open modal for creating a New Post */}
           <Link to='/addpost' >
             <button id="buttonNewPost" type="button" className="btn btn-primary">
@@ -55,11 +95,11 @@ class Blog extends Component {
             </button>
           </Link>
 
-          {/* Section for listing the Posts */}
-          <section className="container my-3 px-0">
+          {/*Name Section for listing the Posts */}
+          <section className="container mb-3 px-0">
             <div className="row g-3 post-list">
               {/* List of cards of posts, Posts returns elements that look like this -> <div className="col-12 col-md-6"> */}
-              <Posts posts={this.state.posts} />
+              <Posts posts={this.state.posts} search={this.state.search} dateFilters={this.state.dateFilters} />
             </div>
           </section>
         </main>
