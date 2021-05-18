@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+// Firebase
+import firebase from '../../config/firebase';
 // Components
 import Posts from '../../components/Posts';
 import HeaderTitle from '../../components/HeaderTitle';
@@ -9,30 +11,27 @@ import './index.css'
 
 class Blog extends Component {
   state = {
-    posts: [
-      {
-        id: 1,
-        title: "Title of the post",
-        date: 1621125559993,
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-      },
-      {
-        id: 2,
-        title: "Another title",
-        date: 1621125559993,
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-      }
-    ]
+    posts: []
   }
 
-  deletePost = id => {
-    let posts = this.state.posts.filter(post => {
-      return post.id !== id
-    })
-
-    this.setState({
-      posts
-    })
+  componentDidMount() {    
+    let postList = []
+    
+    firebase.firestore().collection('posts').get()
+      .then(res => {
+        res.docs.forEach(doc => {          
+          postList.push({
+            // Get the document (post) id
+            id: doc.id,
+            // Get all the data inside the document
+            ...doc.data()
+          })
+        });
+        
+        this.setState({
+          posts: postList
+        })
+      })
   }
 
   render() {
@@ -60,7 +59,7 @@ class Blog extends Component {
           <section className="container my-3 px-0">
             <div className="row g-3 post-list">
               {/* List of cards of posts, Posts returns elements that look like this -> <div className="col-12 col-md-6"> */}
-              <Posts posts={this.state.posts} deletePost={this.deletePost} />
+              <Posts posts={this.state.posts} />
             </div>
           </section>
         </main>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Posts = ({ posts, deletePost }) => {
+const Posts = ({ posts }) => {
 
   const convertDate = milliseconds => {
     const dateObject = new Date(milliseconds)
 
-    const humanDateFormat = dateObject.toLocaleString() //2019-12-9 10:30:15
+    // const humanDateFormat = dateObject.toLocaleString() //2019-12-9 10:30:15
 
     const month = dateObject.toLocaleString("pt-BR", { month: "long" }) // dezembro
     const day = dateObject.toLocaleString("pt-BR", { day: "numeric" }) // 9
@@ -25,11 +25,11 @@ const Posts = ({ posts, deletePost }) => {
                 <h6 className="card-title m-0">{post.title}</h6>
                 <div className="card-date mx-2 text-muted">
                   {/* //converts post.date (unix timestamp in miliseconds) to '{15} de {maio}' */}
-                  {convertDate(post.date)} 
+                  {convertDate(post.creationDate.seconds * 1000)}
                 </div>
               </div>
-              <p className="card-text text-muted">{post.desc}</p>
-              <p onClick={() => { deletePost(post.id) }}>Apagar</p>
+              <p className="card-text text-muted">{post.description}</p>
+              {/* <p onClick={() => { deletePost(post.id) }}>Apagar</p> */}
             </div>
           </div>
         </div>
