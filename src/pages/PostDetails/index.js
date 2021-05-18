@@ -10,7 +10,7 @@ const PostDetails = ({ history, match }) => {
       .then(res => {
         setPost(res.data())
       })
-  }, [])
+  }, [match.params.idPost])
 
   const handleDismiss = () => {
     history.goBack()
