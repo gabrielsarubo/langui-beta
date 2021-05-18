@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // Firebase
 import firebase from '../../config/firebase';
@@ -19,7 +20,7 @@ class Blog extends Component {
   componentDidMount() {    
     let postList = []
     
-    firebase.firestore().collection('posts').get()
+    firebase.firestore().collection('posts').where('userEmail', '==', this.props.userEmail).get()
       .then(res => {
         res.docs.forEach(doc => {          
           postList.push({
@@ -108,4 +109,11 @@ class Blog extends Component {
   }
 }
 
-export default Blog;
+// Get the state from the store // alternative to useSelector()
+const mapStateToProps = state => ({
+  userEmail: state.userEmail
+});
+
+export default connect(
+  mapStateToProps,
+)(Blog);
