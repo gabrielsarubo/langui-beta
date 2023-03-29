@@ -12,10 +12,10 @@ Este projeto utiliza Expo e Yarn. Para instalar e executar o app, siga as orient
 # Clone o repositório na sua máquina
 git clone https://github.com/gabrielsarubo/langui-beta.git
 
+cd ./langui-beta/
+
 # Instale as dependências e acesse o repositório
 yarn install
-
-cd ./langui-beta-master
 
 # Inicie o app na plataforma escolhida
 yarn start
