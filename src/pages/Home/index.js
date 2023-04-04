@@ -16,7 +16,7 @@ const Home = () => {
                 <i className="bi bi-pencil-square text-primary"></i>
                 <span>Escrever um post</span>
               </div>
-              <p className="text-secondary mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit sed morbi</p>
+              <p className="text-secondary mb-0">Pratique sua produção de texto todo dia para ajudar a memorizar novas palavras</p>
             </div>
           </div>
 
