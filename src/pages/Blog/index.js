@@ -64,7 +64,7 @@ class Blog extends Component {
         <main className="container">
           <HeaderTitle
             title='Blog'
-            paragraph='Pratice writing every day to help you memorize the new words you learned.'
+            paragraph='Pratique a escrita todos os dias para ajudá-lo a memorizar as novas palavras que aprendeu.'
           />
 
           {/* Search bar */}
