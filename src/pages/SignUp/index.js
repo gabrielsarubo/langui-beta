@@ -48,7 +48,7 @@ const SignUp = () => {
 
         {isValid === undefined && null}
         {isValid === true && (<div className="feedback-alert text-center text-success mb-4">Cadastro feito com sucesso!</div>)}
-        {isValid === false && (<div className="feedback-alert text-center text-danger mb-4">Algo deu errado, verifique ou tente novamente mais tarde.</div>)}
+        {isValid === false && (<div className="feedback-alert text-center text-danger mb-4">Algo deu errado, verifique ou tente novamente.</div>)}
 
         <button type="submit" className="btn btn-primary w-100"
           disabled={(!(name !== '' && email !== '' && password !== '')) || (false)}>
